@@ -4,14 +4,14 @@ function English() {
   const basicPronoun = "I ";
   // For now always a regular verb not ended in e
   // const verbPhrase = "watch";
-  const verbPhrase = "study";
   const miscPhrase = " TV";
   // Ojo si termina con y - agregar i en el pasado
   // Regular verb terminado en e, agrego solo la d en el pasado
 
+  const [verbPhrase, setVerbPhrase] = useState("watch");
+  const [time, setTime] = useState("");
   var basicPhrase = basicPronoun + verbPhrase + " " + miscPhrase;
   const [phrase, setPhrase] = useState(basicPhrase);
-  const [time, setTime] = useState("");
 
   const times = [
     "presentSimple",
@@ -126,7 +126,7 @@ function English() {
       // Future Perfect Continuous: I will have been watching TV
       case "futurePerfectContinuous":
         setPhrase(
-          basicPronoun + "will have been" + verbPhrase + "ing" + miscPhrase
+          basicPronoun + "will have been " + verbPhrase + "ing" + miscPhrase
         );
         break;
 
@@ -135,7 +135,7 @@ function English() {
         setPhrase(basicPhrase);
         break;
     }
-  }, [time]);
+  }, [time, verbPhrase]);
 
   function setPast() {
     setTime("pastSimple");
@@ -174,6 +174,11 @@ function English() {
   function setFuturePC() {
     setTime("futurePerfectContinuous");
   }
+
+  function setVerb(verb) {
+    setVerbPhrase(verb);
+  }
+
   return (
     <div>
       <p>{phrase}</p>
@@ -195,6 +200,16 @@ function English() {
         <button onClick={setFutureP}>Perfect Future </button>
         <button onClick={setFuturePC}>Perfect Continuous Future </button>
       </div>
+      <h2>Try another verb and see the changes</h2>
+      <button className="verbButton" onClick={() => setVerb("watch")}>
+        Watch{" "}
+      </button>
+      <button className="verbButton" onClick={() => setVerb("study")}>
+        Study{" "}
+      </button>
+      <button className="verbButton" onClick={() => setVerb("enjoy")}>
+        Enjoy{" "}
+      </button>
     </div>
   );
 }
