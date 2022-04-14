@@ -24,7 +24,11 @@ function English() {
       typeOfVerb = "regularY";
       break;
     case "e":
-      typeOfVerb = "regularE";
+      if (verbPhrase in irregularVerbs) {
+        typeOfVerb = "irregularE";
+      } else {
+        typeOfVerb = "regularE";
+      }
       break;
     default:
       typeOfVerb = "regular";
@@ -91,6 +95,20 @@ function English() {
     return pastConj;
   }
   function presentConjunction() {
+    var pronoun = basicPronoun;
+    console.log(pronoun);
+    switch (typeOfVerb) {
+      case "regularE":
+        return " am ";
+      case "You":
+        return " are ";
+      case "He/She/It":
+        return " is ";
+      default:
+        return " are ";
+    }
+  }
+  function adjustContinous() {
     var pronoun = basicPronoun;
     console.log(pronoun);
     switch (pronoun) {
