@@ -1,36 +1,33 @@
 import { useState, useEffect } from "react";
 
 function English() {
-  const basicPronoun = "I ";
-  // For now always a regular verb not ended in e
-  // const verbPhrase = "watch";
+  // const basicPronoun = "I ";
+  // Agregar otros pronombres
   const miscPhrase = " TV";
-  // Ojo si termina con y - agregar i en el pasado
-  // Regular verb terminado en e, agrego solo la d en el pasado
+  //Agregar otros finales ? Adverbios?
 
   const [verbPhrase, setVerbPhrase] = useState("watch");
+  const [basicPronoun, setPronoun] = useState("I");
   const [time, setTime] = useState("");
-  var basicPhrase = basicPronoun + verbPhrase + " " + miscPhrase;
+  var basicPhrase = basicPronoun + " " + verbPhrase + " " + miscPhrase;
   const [phrase, setPhrase] = useState(basicPhrase);
 
-  const times = [
-    "presentSimple",
-    "presentContinuous",
-    "presentPerfectSimple",
-    "presentPerfectContinuous",
-    "pastSimple",
-    "pastContinuous",
-    "pastPerfectSimple",
-    "pastPerfectContinuous",
-    "futureSimple",
-    "futureContinuous",
-    "futurePerfectSimple",
-    "futurePerfectContinuous"
-  ];
+  // const times = [
+  //   "presentSimple",
+  //   "presentContinuous",
+  //   "presentPerfectSimple",
+  //   "presentPerfectContinuous",
+  //   "pastSimple",
+  //   "pastContinuous",
+  //   "pastPerfectSimple",
+  //   "pastPerfectContinuous",
+  //   "futureSimple",
+  //   "futureContinuous",
+  //   "futurePerfectSimple",
+  //   "futurePerfectContinuous"
+  // ];
   var typeOfVerb = "regular";
-  // Other options are
-  // "regularE"
-  // "regularY"
+  // Faltan
   // "irregular" aca voy a tener que buscar en una lista
 
   let lastletter = verbPhrase[verbPhrase.length - 1];
@@ -74,59 +71,111 @@ function English() {
     }
     return (verb = verb + pastProp);
   }
+  function pastConjunction() {
+    var pronoun = basicPronoun;
+    let pastConj;
+    if (pronoun === "I" || pronoun === "He/She/It") {
+      pastConj = " was ";
+    } else {
+      pastConj = " were ";
+    }
+    //presente
+    return pastConj;
+  }
+  function pastPerfectConjunction() {
+    var pronoun = basicPronoun;
+    let pastConj;
+    if (pronoun === "He/She/It") {
+      pastConj = " has ";
+    } else {
+      pastConj = " have ";
+    }
+    //presente
+    return pastConj;
+  }
+  function presentConjunction() {
+    var pronoun = basicPronoun;
+    console.log(pronoun);
+    switch (pronoun) {
+      case "I":
+        return " am ";
+      case "You":
+        return " are ";
+      case "He/She/It":
+        return " is ";
+      default:
+        return " are ";
+    }
+  }
 
   useEffect(() => {
     switch (time) {
       // Tiempos verbales Presentes:
       // Present Continuous: I am watching TV
       case "presentContinuous":
-        setPhrase(basicPronoun + "am " + verbPhrase + "ing" + miscPhrase);
+        setPhrase(
+          basicPronoun + presentConjunction() + verbPhrase + "ing" + miscPhrase
+        );
         break;
       // Present Perfect Simple: I have watched TV
       case "presentPerfectSimple":
-        setPhrase(basicPronoun + "have " + pastParticiple() + miscPhrase);
+        setPhrase(
+          basicPronoun +
+            pastPerfectConjunction() +
+            pastParticiple() +
+            miscPhrase
+        );
         break;
       // Present Perfect Continuous: I have been watching TV
       case "presentPerfectContinuous":
         setPhrase(
-          basicPronoun + "have been " + verbPhrase + "ing" + miscPhrase
+          basicPronoun +
+            pastPerfectConjunction() +
+            " been " +
+            verbPhrase +
+            "ing" +
+            miscPhrase
         );
         break;
 
       // Tiempos verbales Pasados:
       // Past Simple: I watched TV
       case "pastSimple":
-        setPhrase(basicPronoun + "" + pastParticiple() + "" + miscPhrase);
+        setPhrase(basicPronoun + " " + pastParticiple() + "" + miscPhrase);
         break;
       // Past Continuous: I was watching TV
       case "pastContinuous":
-        setPhrase(basicPronoun + "was " + verbPhrase + "ing" + miscPhrase);
+        setPhrase(
+          basicPronoun + pastConjunction() + verbPhrase + "ing" + miscPhrase
+        );
         break;
       // Past Perfect Simple: I had watched TV
       case "pastPerfectSimple":
-        setPhrase(basicPronoun + "had " + pastParticiple() + miscPhrase);
+        setPhrase(basicPronoun + " had " + pastParticiple() + miscPhrase);
         break;
       // Past Perfect Continuous: I had been watching TV
       case "pastPerfectContinuous":
-        setPhrase(basicPronoun + "had been " + verbPhrase + "ing" + miscPhrase);
+        setPhrase(
+          basicPronoun + " had been " + verbPhrase + "ing" + miscPhrase
+        );
         break;
       // Tiempos verbales Futuros:
       // Future Simple: I will watch TV
       case "futureSimple":
-        setPhrase(basicPronoun + "will " + verbPhrase + "" + miscPhrase);
+        setPhrase(basicPronoun + " will " + verbPhrase + "" + miscPhrase);
         break;
       // Future Continuous: I will be watching TV
       case "futureContinuous":
-        setPhrase(basicPronoun + "will be " + verbPhrase + "ing" + miscPhrase);
+        setPhrase(basicPronoun + " will be " + verbPhrase + "ing" + miscPhrase);
         break;
       // Future Perfect Simple: I will have watched TV
       case "futurePerfectSimple":
-        setPhrase(basicPronoun + "will have " + pastParticiple() + miscPhrase);
+        setPhrase(basicPronoun + " will have " + pastParticiple() + miscPhrase);
         break;
       // Future Perfect Continuous: I will have been watching TV
       case "futurePerfectContinuous":
         setPhrase(
-          basicPronoun + "will have been " + verbPhrase + "ing" + miscPhrase
+          basicPronoun + " will have been " + verbPhrase + "ing" + miscPhrase
         );
         break;
 
@@ -135,7 +184,7 @@ function English() {
         setPhrase(basicPhrase);
         break;
     }
-  }, [time, verbPhrase]);
+  }, [time, verbPhrase, basicPronoun]);
 
   function setPast() {
     setTime("pastSimple");
@@ -178,6 +227,10 @@ function English() {
   function setVerb(verb) {
     setVerbPhrase(verb);
   }
+  function setnewPronoun(pronoun) {
+    console.log(pronoun);
+    setPronoun(pronoun);
+  }
 
   return (
     <div>
@@ -202,13 +255,29 @@ function English() {
       </div>
       <h2>Try another verb and see the changes</h2>
       <button className="verbButton" onClick={() => setVerb("watch")}>
-        Watch{" "}
+        Watch
       </button>
       <button className="verbButton" onClick={() => setVerb("study")}>
-        Study{" "}
+        Study
       </button>
       <button className="verbButton" onClick={() => setVerb("enjoy")}>
-        Enjoy{" "}
+        Enjoy
+      </button>
+      <h2>or try another pronoun</h2>
+      <button className="verbButton" onClick={() => setnewPronoun("I")}>
+        I
+      </button>
+      <button className="verbButton" onClick={() => setnewPronoun("You")}>
+        You
+      </button>
+      <button className="verbButton" onClick={() => setnewPronoun("He/She/It")}>
+        He/She/It
+      </button>
+      <button className="verbButton" onClick={() => setnewPronoun("We")}>
+        We
+      </button>
+      <button className="verbButton" onClick={() => setnewPronoun("They")}>
+        They
       </button>
     </div>
   );
