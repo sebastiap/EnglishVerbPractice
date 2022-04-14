@@ -7,31 +7,18 @@ function English() {
   //Agregar otros finales ? Adverbios?
 
   const [verbPhrase, setVerbPhrase] = useState("watch");
+  const irregularVerbs = { write: ["wrote", "written"] };
   const [basicPronoun, setPronoun] = useState("I");
   const [time, setTime] = useState("");
   var basicPhrase = basicPronoun + " " + verbPhrase + " " + miscPhrase;
   const [phrase, setPhrase] = useState(basicPhrase);
 
-  // const times = [
-  //   "presentSimple",
-  //   "presentContinuous",
-  //   "presentPerfectSimple",
-  //   "presentPerfectContinuous",
-  //   "pastSimple",
-  //   "pastContinuous",
-  //   "pastPerfectSimple",
-  //   "pastPerfectContinuous",
-  //   "futureSimple",
-  //   "futureContinuous",
-  //   "futurePerfectSimple",
-  //   "futurePerfectContinuous"
-  // ];
   var typeOfVerb = "regular";
   // Faltan
   // "irregular" aca voy a tener que buscar en una lista
 
   let lastletter = verbPhrase[verbPhrase.length - 1];
-  let pastProp = "ed";
+  let pastProp = "";
   switch (lastletter) {
     case "y":
       typeOfVerb = "regularY";
@@ -43,20 +30,28 @@ function English() {
       typeOfVerb = "regular";
   }
 
-  //Implementar estos despues
-  if (typeOfVerb === "regularE") {
-    pastProp = "d";
-  }
-  if (typeOfVerb === "regularY") {
-    // enjoy es excepcion
-    pastProp = "ied";
-  }
+  // //Implementar estos despues
+  // if (typeOfVerb === "regularE") {
+  //   pastProp = "d";
+  // }
+  // if (typeOfVerb === "regularY") {
+  //   // enjoy es excepcion
+  //   pastProp = "ied";
+  // }
 
   // console.log(lastletter);
 
   function pastParticiple() {
     var verb = verbPhrase;
-    if (typeOfVerb === "regularE") {
+
+    // const irregularVerbs = {"write": [ [ "wrote", "written" ] ]}
+    if (verb in irregularVerbs) {
+      if (time === "pastSimple") {
+        verb = irregularVerbs[verb][0];
+      } else {
+        verb = irregularVerbs[verb][1];
+      }
+    } else if (typeOfVerb === "regularE") {
       pastProp = "d";
     } else if (typeOfVerb === "regularY") {
       // enjoy es excepcion
@@ -64,9 +59,11 @@ function English() {
         verb = verb.slice(0, -1);
         pastProp = "ied";
       } else {
+        //enjoy y otros
         pastProp = "ed";
       }
     } else {
+      //regulares sin terminacion especial
       pastProp = "ed";
     }
     return (verb = verb + pastProp);
@@ -253,6 +250,7 @@ function English() {
         <button onClick={setFutureP}>Perfect Future </button>
         <button onClick={setFuturePC}>Perfect Continuous Future </button>
       </div>
+      {/* Example Verbs */}
       <h2>Try another verb and see the changes</h2>
       <button className="verbButton" onClick={() => setVerb("watch")}>
         Watch
@@ -263,6 +261,11 @@ function English() {
       <button className="verbButton" onClick={() => setVerb("enjoy")}>
         Enjoy
       </button>
+      <button className="verbButton" onClick={() => setVerb("write")}>
+        Write
+      </button>
+
+      {/* // Pronouns */}
       <h2>or try another pronoun</h2>
       <button className="verbButton" onClick={() => setnewPronoun("I")}>
         I
