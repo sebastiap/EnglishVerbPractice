@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-
+import irregularVerbs from "./resources/irregularVerbs";
 function English() {
   const miscPhrase = " TV";
   //Agregar otros finales ? Adverbios?
 
   const [verbPhrase, setVerbPhrase] = useState("watch");
-  const irregularVerbs = { write: ["wrote", "written"] };
+  // const irregularVerbs = { write: ["wrote", "written"] };
   const [basicPronoun, setPronoun] = useState("I");
   const [time, setTime] = useState("");
   var basicPhrase = basicPronoun + " " + verbPhrase + " " + miscPhrase;
@@ -49,9 +49,9 @@ function English() {
     // const irregularVerbs = {"write": [ [ "wrote", "written" ] ]}
     if (verb in irregularVerbs) {
       if (time === "pastSimple") {
-        verb = irregularVerbs[verb][0];
+        verb = irregularVerbs[verb][0][0];
       } else {
-        verb = irregularVerbs[verb][1];
+        verb = irregularVerbs[verb][0][1];
       }
     } else if (typeOfVerb === "regularE") {
       pastProp = "d";
@@ -316,6 +316,9 @@ function English() {
       </button>
       <button className="verbButton" onClick={() => setVerb("write")}>
         Write
+      </button>
+      <button className="verbButton" onClick={() => setVerb("steal")}>
+        Steal
       </button>
 
       {/* // Pronouns */}
