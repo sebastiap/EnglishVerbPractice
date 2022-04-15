@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react";
 import irregularVerbs from "./resources/irregularVerbs";
+import { colorPallete } from "./resources/colorPallete";
+const irregularVerbsArray = Object.keys(irregularVerbs);
+
 function English() {
   const miscPhrase = " TV";
   //Agregar otros finales ? Adverbios?
-
   const [verbPhrase, setVerbPhrase] = useState("watch");
+  const [color, setColor] = useState("green");
   // const irregularVerbs = { write: ["wrote", "written"] };
   const [basicPronoun, setPronoun] = useState("I");
   const [time, setTime] = useState("");
   var basicPhrase = basicPronoun + " " + verbPhrase + " " + miscPhrase;
   const [phrase, setPhrase] = useState(basicPhrase);
+  const [hideVerbs, setHideVerbs] = useState(true);
 
   var typeOfVerb = "regular";
   // Faltan
@@ -234,6 +238,13 @@ function English() {
         setPhrase(basicPhrase + " everyday.");
         break;
     }
+
+    // setColor("green");
+    const randomColor =
+      colorPallete[Math.floor(Math.random() * colorPallete.length)];
+    {
+      color !== randomColor ? setColor(randomColor) : setColor("#230007");
+    }
   }, [time, verbPhrase, basicPronoun]);
 
   function setPast() {
@@ -274,9 +285,17 @@ function English() {
     setTime("futurePerfectContinuous");
   }
 
-  function setVerb(verb) {
+  function setIrregularVerb(Iverb) {
+    const verb = Iverb["verbo"];
     setVerbPhrase(verb);
   }
+
+  function setVerb(verb) {
+    // console.log(verb["verbo"]);
+    // console.log(typeof verb);
+    setVerbPhrase(verb);
+  }
+
   function setnewPronoun(pronoun) {
     // console.log(pronoun);
     setPronoun(pronoun);
@@ -284,7 +303,9 @@ function English() {
 
   return (
     <div>
-      <p>{phrase}</p>
+      <p style={{ color: color }} className="phrase" id="Phrase">
+        {phrase}
+      </p>
       <div>
         <button onClick={setPast}>Simple Past </button>
         <button onClick={setPastC}> Past Continuous </button>
@@ -304,7 +325,23 @@ function English() {
         <button onClick={setFuturePC}>Perfect Continuous Future </button>
       </div>
       {/* Example Verbs */}
-      <h2>Try another verb and see the changes</h2>
+      <h2>You can try another pronoun</h2>
+      <button className="verbButton" onClick={() => setnewPronoun("I")}>
+        I
+      </button>
+      <button className="verbButton" onClick={() => setnewPronoun("You")}>
+        You
+      </button>
+      <button className="verbButton" onClick={() => setnewPronoun("He/She/It")}>
+        He/She/It
+      </button>
+      <button className="verbButton" onClick={() => setnewPronoun("We")}>
+        We
+      </button>
+      <button className="verbButton" onClick={() => setnewPronoun("They")}>
+        They
+      </button>
+      <h2>You can also try another verb and see the changes</h2>
       <button className="verbButton" onClick={() => setVerb("watch")}>
         Watch
       </button>
@@ -322,22 +359,30 @@ function English() {
       </button>
 
       {/* // Pronouns */}
-      <h2>or try another pronoun</h2>
-      <button className="verbButton" onClick={() => setnewPronoun("I")}>
-        I
-      </button>
-      <button className="verbButton" onClick={() => setnewPronoun("You")}>
-        You
-      </button>
-      <button className="verbButton" onClick={() => setnewPronoun("He/She/It")}>
-        He/She/It
-      </button>
-      <button className="verbButton" onClick={() => setnewPronoun("We")}>
-        We
-      </button>
-      <button className="verbButton" onClick={() => setnewPronoun("They")}>
-        They
-      </button>
+      <h2>More options</h2>
+      {hideVerbs ? (
+        <button className="hideButton" onClick={() => setHideVerbs(false)}>
+          Show More Verbs
+        </button>
+      ) : (
+        <div>
+          <button className="hideButton" onClick={() => setHideVerbs(true)}>
+            Hide Extra Verbs
+          </button>
+          <div>
+            {irregularVerbsArray.map((verbo) => (
+              <button
+                className="verbButton"
+                onClick={() => setIrregularVerb({ verbo })}
+              >
+                {verbo}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* } */}
     </div>
   );
 }
