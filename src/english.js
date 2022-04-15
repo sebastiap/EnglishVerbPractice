@@ -8,6 +8,7 @@ function English() {
   //Agregar otros finales ? Adverbios?
   const [verbPhrase, setVerbPhrase] = useState("watch");
   const [color, setColor] = useState("green");
+  const [darkmode, setDarkmode] = useState(false);
   // const irregularVerbs = { write: ["wrote", "written"] };
   const [basicPronoun, setPronoun] = useState("I");
   const [time, setTime] = useState("");
@@ -16,8 +17,6 @@ function English() {
   const [hideVerbs, setHideVerbs] = useState(true);
 
   var typeOfVerb = "regular";
-  // Faltan
-  // "irregular" aca voy a tener que buscar en una lista
 
   let lastletter = verbPhrase[verbPhrase.length - 1];
   let pastProp = "";
@@ -35,17 +34,6 @@ function English() {
     default:
       typeOfVerb = "regular";
   }
-
-  // //Implementar estos despues
-  // if (typeOfVerb === "regularE") {
-  //   pastProp = "d";
-  // }
-  // if (typeOfVerb === "regularY") {
-  //   // enjoy es excepcion
-  //   pastProp = "ied";
-  // }
-
-  // console.log(lastletter);
 
   function pastParticiple() {
     var verb = verbPhrase;
@@ -65,7 +53,7 @@ function English() {
         verb = verb.slice(0, -1);
         pastProp = "ied";
       } else {
-        //enjoy y otros
+        //enjoy y otras excepciones
         pastProp = "ed";
       }
     } else {
@@ -98,7 +86,6 @@ function English() {
   }
   function presentConjunction() {
     var pronoun = basicPronoun;
-    // console.log(pronoun);
     switch (pronoun) {
       case "I":
         return " am ";
@@ -242,9 +229,7 @@ function English() {
     // setColor("green");
     const randomColor =
       colorPallete[Math.floor(Math.random() * colorPallete.length)];
-    {
-      color !== randomColor ? setColor(randomColor) : setColor("#230007");
-    }
+    color !== randomColor ? setColor(randomColor) : setColor("#230007");
   }, [time, verbPhrase, basicPronoun]);
 
   function setPast() {
@@ -297,12 +282,15 @@ function English() {
   }
 
   function setnewPronoun(pronoun) {
-    // console.log(pronoun);
     setPronoun(pronoun);
   }
 
   return (
-    <div>
+    <div
+      style={darkmode ? { background: "lightgrey" } : { background: "white" }}
+    >
+      <h1>Hello Student</h1>
+      <h2>Select a Time and the phrase will change</h2>
       <p style={{ color: color }} className="phrase" id="Phrase">
         {phrase}
       </p>
@@ -324,6 +312,7 @@ function English() {
         <button onClick={setFutureP}>Perfect Future </button>
         <button onClick={setFuturePC}>Perfect Continuous Future </button>
       </div>
+
       {/* Example Verbs */}
       <h2>You can try another pronoun</h2>
       <button className="verbButton" onClick={() => setnewPronoun("I")}>
@@ -358,8 +347,10 @@ function English() {
         Steal
       </button>
 
-      {/* // Pronouns */}
-      <h2>More options</h2>
+      <h2 className="more">More options</h2>
+      <button className="hideButton" onClick={() => setDarkmode(!darkmode)}>
+        Low Contrast Mode
+      </button>
       {hideVerbs ? (
         <button className="hideButton" onClick={() => setHideVerbs(false)}>
           Show More Verbs
@@ -372,6 +363,8 @@ function English() {
           <div>
             {irregularVerbsArray.map((verbo) => (
               <button
+                //Revisar esto
+                key={verbo}
                 className="verbButton"
                 onClick={() => setIrregularVerb({ verbo })}
               >
@@ -381,8 +374,6 @@ function English() {
           </div>
         </div>
       )}
-
-      {/* } */}
     </div>
   );
 }

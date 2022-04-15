@@ -1,6 +1,8 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .buttonWrapper {
@@ -29,8 +31,12 @@ h2 {
   text-shadow: 1px 0 0 #fff;
 }
 
+.more {
+  color: #d04764;
+}
+
 p {
-  color: #33cc33;
+  color: #5e5b52;
   font-family: "Original Surfer", cursive;
   font-size: 20px;
   line-height: 28px;
@@ -39,7 +45,6 @@ p {
 }
 
 .phrase {
-  color: #33cc33;
   animation: animate 2s linear forwards;
 }
 

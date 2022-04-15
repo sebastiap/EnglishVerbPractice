@@ -13,5 +13,12 @@ Created with CodeSandbox
 [x] Regular Verbs Exceptions
 [X] Irregular Verbs
 [X] add adverbs
-[ ] More Examples for Verbs and Adverbs
-[ ] Improve CSS
+[X] More Examples for Verbs and Adverbs
+[X] Improve CSS
+[X] Low Contrast Mode
+
+## Optional Improvements
+
+[ ] Dark Mode?
+[ ] less code for setVerb
+[ ] more component division?
