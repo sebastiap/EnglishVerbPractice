@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 
 function English() {
-  // const basicPronoun = "I ";
-  // Agregar otros pronombres
   const miscPhrase = " TV";
   //Agregar otros finales ? Adverbios?
 
@@ -96,21 +94,7 @@ function English() {
   }
   function presentConjunction() {
     var pronoun = basicPronoun;
-    console.log(pronoun);
-    switch (typeOfVerb) {
-      case "regularE":
-        return " am ";
-      case "You":
-        return " are ";
-      case "He/She/It":
-        return " is ";
-      default:
-        return " are ";
-    }
-  }
-  function adjustContinous() {
-    var pronoun = basicPronoun;
-    console.log(pronoun);
+    // console.log(pronoun);
     switch (pronoun) {
       case "I":
         return " am ";
@@ -122,6 +106,13 @@ function English() {
         return " are ";
     }
   }
+  function adjustContinous() {
+    let modifVerb = verbPhrase;
+    if (typeOfVerb === "irregularE") {
+      modifVerb = modifVerb.slice(0, -1);
+    }
+    return modifVerb + "ing";
+  }
 
   useEffect(() => {
     switch (time) {
@@ -129,7 +120,11 @@ function English() {
       // Present Continuous: I am watching TV
       case "presentContinuous":
         setPhrase(
-          basicPronoun + presentConjunction() + verbPhrase + "ing" + miscPhrase
+          basicPronoun +
+            presentConjunction() +
+            adjustContinous() +
+            miscPhrase +
+            " at this moment."
         );
         break;
       // Present Perfect Simple: I have watched TV
@@ -138,7 +133,8 @@ function English() {
           basicPronoun +
             pastPerfectConjunction() +
             pastParticiple() +
-            miscPhrase
+            miscPhrase +
+            " today"
         );
         break;
       // Present Perfect Continuous: I have been watching TV
@@ -147,56 +143,95 @@ function English() {
           basicPronoun +
             pastPerfectConjunction() +
             " been " +
-            verbPhrase +
-            "ing" +
-            miscPhrase
+            adjustContinous() +
+            miscPhrase +
+            " until recently."
         );
         break;
 
       // Tiempos verbales Pasados:
       // Past Simple: I watched TV
       case "pastSimple":
-        setPhrase(basicPronoun + " " + pastParticiple() + "" + miscPhrase);
+        setPhrase(
+          basicPronoun +
+            " " +
+            pastParticiple() +
+            "" +
+            miscPhrase +
+            " yesterday."
+        );
         break;
       // Past Continuous: I was watching TV
       case "pastContinuous":
         setPhrase(
-          basicPronoun + pastConjunction() + verbPhrase + "ing" + miscPhrase
+          basicPronoun +
+            pastConjunction() +
+            adjustContinous() +
+            miscPhrase +
+            " last time i checked."
         );
         break;
       // Past Perfect Simple: I had watched TV
       case "pastPerfectSimple":
-        setPhrase(basicPronoun + " had " + pastParticiple() + miscPhrase);
+        setPhrase(
+          basicPronoun +
+            " had " +
+            pastParticiple() +
+            miscPhrase +
+            " since yesterday."
+        );
         break;
       // Past Perfect Continuous: I had been watching TV
       case "pastPerfectContinuous":
         setPhrase(
-          basicPronoun + " had been " + verbPhrase + "ing" + miscPhrase
+          basicPronoun +
+            " had been " +
+            adjustContinous() +
+            miscPhrase +
+            " for a week."
         );
         break;
       // Tiempos verbales Futuros:
       // Future Simple: I will watch TV
       case "futureSimple":
-        setPhrase(basicPronoun + " will " + verbPhrase + "" + miscPhrase);
+        setPhrase(
+          basicPronoun + " will " + verbPhrase + "" + miscPhrase + " tomorrow."
+        );
         break;
       // Future Continuous: I will be watching TV
       case "futureContinuous":
-        setPhrase(basicPronoun + " will be " + verbPhrase + "ing" + miscPhrase);
+        setPhrase(
+          basicPronoun +
+            " will be " +
+            adjustContinous() +
+            miscPhrase +
+            " next week."
+        );
         break;
       // Future Perfect Simple: I will have watched TV
       case "futurePerfectSimple":
-        setPhrase(basicPronoun + " will have " + pastParticiple() + miscPhrase);
+        setPhrase(
+          basicPronoun +
+            " will have " +
+            pastParticiple() +
+            miscPhrase +
+            " in the afternoon."
+        );
         break;
       // Future Perfect Continuous: I will have been watching TV
       case "futurePerfectContinuous":
         setPhrase(
-          basicPronoun + " will have been " + verbPhrase + "ing" + miscPhrase
+          basicPronoun +
+            " will have been " +
+            adjustContinous() +
+            miscPhrase +
+            " for a month this friday."
         );
         break;
 
       default:
         // Present Simple: I watch TV
-        setPhrase(basicPhrase);
+        setPhrase(basicPhrase + " everyday.");
         break;
     }
   }, [time, verbPhrase, basicPronoun]);
@@ -243,7 +278,7 @@ function English() {
     setVerbPhrase(verb);
   }
   function setnewPronoun(pronoun) {
-    console.log(pronoun);
+    // console.log(pronoun);
     setPronoun(pronoun);
   }
 

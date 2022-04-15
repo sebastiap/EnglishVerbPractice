@@ -11,6 +11,7 @@ Created with CodeSandbox
 [x] Pronouns
 [x] Regular Verbs
 [x] Regular Verbs Exceptions
-[ ] Irregular Verbs
-[ ] add adverbs
+[X] Irregular Verbs
+[X] add adverbs
+[ ] More Examples for Verbs and Adverbs
 [ ] Improve CSS
