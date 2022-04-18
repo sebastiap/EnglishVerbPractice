@@ -20,5 +20,7 @@ Created with CodeSandbox
 ## Optional Improvements
 
 [ ] Dark Mode?
-[ ] less code for setVerb
+[ ] Explanation of each time
+[X] less code for setVerb
+[ ] Questions and negative?
 [ ] more component division?
