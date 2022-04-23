@@ -4,16 +4,17 @@ import { colorPallete } from "./resources/colorPallete";
 const irregularVerbsArray = Object.keys(irregularVerbs);
 
 function English() {
-  const miscPhrase = " TV";
-
+  const [miscPhrase, setMiscPhrase] = useState(" TV");
   const [verbPhrase, setVerbPhrase] = useState("watch");
   const [color, setColor] = useState("green");
-  const [darkmode, setDarkmode] = useState(false);
 
   const [basicPronoun, setPronoun] = useState("I");
   const [time, setTime] = useState("");
   var basicPhrase = basicPronoun + " " + verbPhrase + " " + miscPhrase;
   const [phrase, setPhrase] = useState(basicPhrase);
+
+  //Opciones
+  const [darkmode, setDarkmode] = useState(false);
   const [hideVerbs, setHideVerbs] = useState(true);
 
   var typeOfVerb = "regular";
@@ -104,6 +105,8 @@ function English() {
     return modifVerb + "ing";
   }
 
+  //useEffect
+
   useEffect(() => {
     switch (time) {
       // Tiempos verbales Presentes:
@@ -158,7 +161,7 @@ function English() {
             pastConjunction() +
             adjustContinous() +
             miscPhrase +
-            " last time i checked."
+            " last time I checked."
         );
         break;
       // Past Perfect Simple: I had watched TV
@@ -231,52 +234,22 @@ function English() {
     color !== randomColor ? setColor(randomColor) : setColor("#230007");
   }, [time, verbPhrase, basicPronoun]);
 
-  // function setPast() {
-  //   setTime("pastSimple");
-  // }
-  // function setPastC() {
-  //   setTime("pastContinuous");
-  // }
-  // function setPastP() {
-  //   setTime("pastPerfectSimple");
-  // }
-  // function setPastPC() {
-  //   setTime("pastPerfectContinuous");
-  // }
-  // function setPresent() {
-  //   setTime("");
-  // }
-  // function setPresentC() {
-  //   setTime("presentContinuous");
-  // }
-  // function setPresentP() {
-  //   setTime("presentPerfectSimple");
-  // }
-  // function setPresentPC() {
-  //   setTime("presentPerfectContinuous");
-  // }
-
-  // function setFuture() {
-  //   setTime("futureSimple");
-  // }
-  // function setFutureC() {
-  //   setTime("futureContinuous");
-  // }
-  // function setFutureP() {
-  //   setTime("futurePerfectSimple");
-  // }
-  // function setFuturePC() {
-  //   setTime("futurePerfectContinuous");
-  // }
-
   function setIrregularVerb(Iverb) {
     const verb = Iverb["verbo"];
     setVerbPhrase(verb);
   }
 
   function setVerb(verb) {
-    // console.log(verb["verbo"]);
-    // console.log(typeof verb);
+    if (verb === "watch") {
+      setMiscPhrase(" TV");
+    } else if (verb === "study") {
+      setMiscPhrase(" english");
+    } else if (verb === "enjoy") {
+      setMiscPhrase(" the show");
+    } else {
+      setMiscPhrase(" something");
+    }
+    console.log(miscPhrase);
     setVerbPhrase(verb);
   }
 
@@ -297,37 +270,37 @@ function English() {
         <button onClick={() => setTime("pastSimple")}>Simple Past </button>
         <button onClick={() => setTime("pastContinuous")}>
           {" "}
-          Past Continuous{" "}
+          Past Continuous
         </button>
         <button onClick={() => setTime("pastPerfectSimple")}>
-          Perfect Past{" "}
+          Past Perfect
         </button>
         <button onClick={() => setTime("pastPerfectContinuous")}>
-          Perfect Continuous Past
+          Past Perfect Continuous
         </button>
       </div>
       <div>
         <button onClick={() => setTime("")}>Simple Present </button>
         <button onClick={() => setTime("presentContinuous")}>
-          Present Continuous{" "}
+          Present Continuous
         </button>
         <button onClick={() => setTime("presentPerfectSimple")}>
-          Perfect Present{" "}
+          Present Perfect
         </button>
         <button onClick={() => setTime("presentPerfectContinuous")}>
-          Perfect Continuous Present{" "}
+          Present Perfect Continuous
         </button>
       </div>
       <div>
         <button onClick={() => setTime("futureSimple")}>Simple Future </button>
         <button onClick={() => setTime("futureContinuous")}>
-          Future Continuous{" "}
+          Future Continuous
         </button>
         <button onClick={() => setTime("futurePerfectSimple")}>
-          Perfect Future{" "}
+          Future Perfect
         </button>
         <button onClick={() => setTime("futurePerfectContinuous")}>
-          Perfect Continuous Future{" "}
+          Future Perfect Continuous
         </button>
       </div>
 
