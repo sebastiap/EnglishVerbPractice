@@ -1,14 +1,10 @@
-.App {
-  font-family: sans-serif;
-  text-align: center;
+* {
   margin: 0;
   padding: 0;
 }
-
-.buttonWrapper {
-  /* margin: 2em; */
-  display: flex;
-  align-items: flex-start;
+.App {
+  font-family: sans-serif;
+  text-align: center;
 }
 
 h1 {
@@ -59,7 +55,17 @@ p {
     color: #2ca4b0;
   }
 }
+.buttonWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-left: 1em;
+}
 
+.buttonWrapperVerb {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin-left: 1em;
+}
 /* From uiverse.io by @e-coders */
 button {
   appearance: none;

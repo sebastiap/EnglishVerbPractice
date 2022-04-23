@@ -266,7 +266,7 @@ function English() {
       <p style={{ color: color }} className="phrase" id="Phrase">
         {phrase}
       </p>
-      <div>
+      <div className="buttonWrapper">
         <button onClick={() => setTime("pastSimple")}>Simple Past </button>
         <button onClick={() => setTime("pastContinuous")}>
           {" "}
@@ -279,7 +279,7 @@ function English() {
           Past Perfect Continuous
         </button>
       </div>
-      <div>
+      <div className="buttonWrapper">
         <button onClick={() => setTime("")}>Simple Present </button>
         <button onClick={() => setTime("presentContinuous")}>
           Present Continuous
@@ -291,7 +291,7 @@ function English() {
           Present Perfect Continuous
         </button>
       </div>
-      <div>
+      <div className="buttonWrapper">
         <button onClick={() => setTime("futureSimple")}>Simple Future </button>
         <button onClick={() => setTime("futureContinuous")}>
           Future Continuous
@@ -303,41 +303,45 @@ function English() {
           Future Perfect Continuous
         </button>
       </div>
-
-      {/* Example Verbs */}
       <h2>You can try another pronoun</h2>
-      <button className="verbButton" onClick={() => setnewPronoun("I")}>
-        I
-      </button>
-      <button className="verbButton" onClick={() => setnewPronoun("You")}>
-        You
-      </button>
-      <button className="verbButton" onClick={() => setnewPronoun("He/She/It")}>
-        He/She/It
-      </button>
-      <button className="verbButton" onClick={() => setnewPronoun("We")}>
-        We
-      </button>
-      <button className="verbButton" onClick={() => setnewPronoun("They")}>
-        They
-      </button>
+      <div className="buttonWrapperVerb">
+        <button className="verbButton" onClick={() => setnewPronoun("I")}>
+          I
+        </button>
+        <button className="verbButton" onClick={() => setnewPronoun("You")}>
+          You
+        </button>
+        <button
+          className="verbButton"
+          onClick={() => setnewPronoun("He/She/It")}
+        >
+          He/She/It
+        </button>
+        <button className="verbButton" onClick={() => setnewPronoun("We")}>
+          We
+        </button>
+        <button className="verbButton" onClick={() => setnewPronoun("They")}>
+          They
+        </button>
+      </div>
       <h2>You can also try another verb and see the changes</h2>
-      <button className="verbButton" onClick={() => setVerb("watch")}>
-        Watch
-      </button>
-      <button className="verbButton" onClick={() => setVerb("study")}>
-        Study
-      </button>
-      <button className="verbButton" onClick={() => setVerb("enjoy")}>
-        Enjoy
-      </button>
-      <button className="verbButton" onClick={() => setVerb("write")}>
-        Write
-      </button>
-      <button className="verbButton" onClick={() => setVerb("steal")}>
-        Steal
-      </button>
-
+      <div className="buttonWrapperVerb">
+        <button className="verbButton" onClick={() => setVerb("watch")}>
+          Watch
+        </button>
+        <button className="verbButton" onClick={() => setVerb("study")}>
+          Study
+        </button>
+        <button className="verbButton" onClick={() => setVerb("enjoy")}>
+          Enjoy
+        </button>
+        <button className="verbButton" onClick={() => setVerb("write")}>
+          Write
+        </button>
+        <button className="verbButton" onClick={() => setVerb("steal")}>
+          Steal
+        </button>
+      </div>
       <h2 className="more">More options</h2>
       <button className="hideButton" onClick={() => setDarkmode(!darkmode)}>
         Low Contrast Mode
@@ -351,7 +355,7 @@ function English() {
           <button className="hideButton" onClick={() => setHideVerbs(true)}>
             Hide Extra Verbs
           </button>
-          <div>
+          <div className="buttonWrapperVerb">
             {irregularVerbsArray.map((verbo) => (
               <button
                 //Revisar esto

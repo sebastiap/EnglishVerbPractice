@@ -15,6 +15,7 @@ Created with CodeSandbox
 [X] add adverbs
 [X] More Examples for Verbs and Adverbs
 [X] Improve CSS
+[X] Improve CSS more
 [X] Low Contrast Mode
 
 ## Optional Improvements
