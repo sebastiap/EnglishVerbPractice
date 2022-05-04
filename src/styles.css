@@ -135,6 +135,32 @@ button:active {
   margin-bottom: 3em;
 }
 
+.header {
+  display: grid;
+  grid-template-columns: 5% 90% 5%;
+}
+
+.header button {
+  width: 40%;
+  min-height: 0%;
+  height: 50%;
+  padding: 0;
+  background-color: #d04764;
+  color: whitesmoke;
+  margin-left: 50%;
+}
+
+.header button:hover {
+  background-color: #5e5b52;
+  color: #d58ebf;
+  width: 60%;
+  height: 60%;
+  padding: 10%;
+  border-radius: 80%;
+  margin: 20%;
+}
+
+/* Pasar a otra clase y revisar*/
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */

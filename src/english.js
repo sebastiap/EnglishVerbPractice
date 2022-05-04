@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import irregularVerbs from "./resources/irregularVerbs";
 import { colorPallete } from "./resources/colorPallete";
+import Modal from "./components/modal";
 const irregularVerbsArray = Object.keys(irregularVerbs);
 
 function English() {
@@ -15,6 +16,7 @@ function English() {
 
   //Opciones
   const [darkmode, setDarkmode] = useState(false);
+  const [showModal, setshowModal] = useState(false);
   const [hideVerbs, setHideVerbs] = useState(true);
 
   var typeOfVerb = "regular";
@@ -261,15 +263,12 @@ function English() {
     <div
       style={darkmode ? { background: "lightgrey" } : { background: "white" }}
     >
-      <h1>Hello Student</h1> <button>?</button>
-      {darkmode ? (
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>Some text in the Modal..</p>
-        </div>
-      ) : (
-        <></>
-      )}
+      <div className="header">
+        <div></div>
+        <h1>Hello Student</h1>
+        <button onClick={() => setshowModal(!showModal)}>?</button>
+      </div>
+      {showModal ? <Modal /> : <></>}
       <h2>Select a Time and the phrase will change</h2>
       <p style={{ color: color }} className="phrase" id="Phrase">
         {phrase}
