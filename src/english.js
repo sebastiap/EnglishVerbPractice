@@ -261,7 +261,15 @@ function English() {
     <div
       style={darkmode ? { background: "lightgrey" } : { background: "white" }}
     >
-      <h1>Hello Student</h1>
+      <h1>Hello Student</h1> <button>?</button>
+      {darkmode ? (
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Some text in the Modal..</p>
+        </div>
+      ) : (
+        <></>
+      )}
       <h2>Select a Time and the phrase will change</h2>
       <p style={{ color: color }} className="phrase" id="Phrase">
         {phrase}
