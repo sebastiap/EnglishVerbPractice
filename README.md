@@ -17,11 +17,12 @@ Created with CodeSandbox
 [X] Improve CSS
 [X] Improve CSS more
 [X] Low Contrast Mode
+[X] Explanation of each time
+[X] less code for setVerb
+[ ] Modal Animation
 
 ## Optional Improvements
 
 [ ] Dark Mode?
-[ ] Explanation of each time
-[X] less code for setVerb
 [ ] Questions and negative?
 [ ] more component division?
