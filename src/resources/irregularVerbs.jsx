@@ -631,5 +631,4 @@ const irregularVerbs = {
   write: [["wrote", "written"]]
 };
 
-const irregularVerbsArray = [];
 export default irregularVerbs;

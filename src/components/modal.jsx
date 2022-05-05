@@ -1,24 +1,24 @@
-import { useState, useEffect } from "react";
 import { colorPallete } from "../resources/colorPallete";
 import text from "../resources/pageText";
 
 function Modal() {
-  const [miscPhrase, setMiscPhrase] = useState(" TV");
-  const [verbPhrase, setVerbPhrase] = useState("watch");
   var randomColor = "grey";
   var antColor = "whitewheat";
   function getNewColor() {
     randomColor = colorPallete[Math.floor(Math.random() * colorPallete.length)];
     if (randomColor === antColor) {
-      return "whitewheat";
+      antColor = "whitewheat";
+      return antColor;
     } else {
+      antColor = randomColor;
       return randomColor;
     }
   }
   return (
     <div>
-      <div class="modal-content">
-        <span class="close">&times;</span>
+      <div className="modal-content">
+        <span className="close">&times;</span>
+        <h1 style={{ color: getNewColor() }}>VERB TENSES HELP</h1>
         <div className=".modal-content-container">
           {text.map(([linea, linea2]) => (
             <p class="modal-content-text" style={{ color: getNewColor() }}>

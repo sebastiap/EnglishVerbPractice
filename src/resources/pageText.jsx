@@ -35,7 +35,7 @@ const text = [
     "tense refers to a completed action in the future. When we use this tense we are projecting ourselves forward into the future and looking back at an action that will be completed some time later than now. It is most often used with a time expression."
   ],
   [
-    "future perfect Continous",
+    "Future perfect Continous",
     "Like the future perfect simple, this form is used to project ourselves forward in time and to look back. It refers to events or actions that are currently unfinished but will be finished at some future time. It is most often used with a time expression."
   ]
 ];
