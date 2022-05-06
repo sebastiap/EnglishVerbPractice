@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { colorPallete } from "../resources/colorPallete";
 import text from "../resources/pageText";
+import modalClass from "./modal.module.css";
 
 function Modal(props) {
+  const [language, setLanguage] = useState(0);
   var randomColor = "grey";
   var antColor = "whitewheat";
   function getNewColor() {
@@ -19,18 +21,32 @@ function Modal(props) {
   function showModal() {
     props.changeView();
   }
+  function changeLanguage() {
+    if (language) {
+      setLanguage(0);
+    } else {
+      setLanguage(1);
+    }
+  }
+
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <span className="close" onClick={showModal}>
-          &times;
-        </span>
-        <h1 style={{ color: getNewColor() }}>VERB TENSES HELP</h1>
-        <div className=".modal-content-container">
-          {text.map(([linea, linea2]) => (
+    <div className={modalClass.modal}>
+      <div className={modalClass.modalcontent}>
+        <div className={modalClass.modalheader}>
+          <button className={modalClass.langbutton} onClick={changeLanguage}>
+            {language ? "Ingles" : "Español"}
+          </button>
+          <h1 style={{ color: getNewColor() }}>VERB TENSES HELP</h1>
+          <span className={modalClass.close} onClick={showModal}>
+            &times;
+          </span>
+        </div>
+
+        <div className={modalClass.modalcontentcontainer}>
+          {text[language].map(([linea, linea2]) => (
             <p
               key={linea}
-              className="modal-content-text"
+              className={modalClass.modalcontenttext}
               style={{ color: getNewColor() }}
             >
               <b>{linea}</b> - {linea2}

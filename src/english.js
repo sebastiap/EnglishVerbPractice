@@ -260,10 +260,9 @@ function English() {
   }
 
   function handleModal() {
-    console.log("clickee un boton");
-    console.log(showModal);
     setshowModal(!showModal);
   }
+
   return (
     <div
       style={darkmode ? { background: "lightgrey" } : { background: "white" }}
