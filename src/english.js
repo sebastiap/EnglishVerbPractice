@@ -259,6 +259,11 @@ function English() {
     setPronoun(pronoun);
   }
 
+  function handleModal() {
+    console.log("clickee un boton");
+    console.log(showModal);
+    setshowModal(!showModal);
+  }
   return (
     <div
       style={darkmode ? { background: "lightgrey" } : { background: "white" }}
@@ -266,9 +271,9 @@ function English() {
       <div className="header">
         <div></div>
         <h1>Hello Student</h1>
-        <button onClick={() => setshowModal(!showModal)}>?</button>
+        <button onClick={() => handleModal()}>?</button>
       </div>
-      {showModal ? <Modal /> : <></>}
+      {showModal ? <Modal changeView={() => handleModal()} /> : <></>}
       <h2>Select a Time and the phrase will change</h2>
       <p style={{ color: color }} className="phrase" id="Phrase">
         {phrase}
