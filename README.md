@@ -7,22 +7,22 @@ Created with CodeSandbox
 
 ## Tasklist
 
-[x] Verb Tenses
-[x] Pronouns
-[x] Regular Verbs
-[x] Regular Verbs Exceptions
-[X] Irregular Verbs
-[X] add adverbs
-[X] More Examples for Verbs and Adverbs
-[X] Improve CSS
-[X] Improve CSS more
-[X] Low Contrast Mode
-[X] Explanation of each time
-[X] less code for setVerb
-[ ] Modal Animation
+- [x] Verb Tenses
+- [x] Pronouns
+- [x] Regular Verbs
+- [x] Regular Verbs Exceptions
+- [X] Irregular Verbs
+- [X] add adverbs
+- [X] More Examples for Verbs and Adverbs
+- [X] Improve CSS
+- [X] Improve CSS more
+- [X] Low Contrast Mode
+- [X] Explanation of each time
+- [X] less code for setVerb
+- [ ] Modal Animation
 
 ## Optional Improvements
 
-[ ] Dark Mode?
-[ ] Questions and negative?
-[ ] more component division?
+- [ ] Dark Mode?
+- [ ] Questions and negative?
+- [ ] more component division?
