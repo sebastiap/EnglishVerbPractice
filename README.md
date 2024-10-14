@@ -3,7 +3,10 @@
 Created with CodeSandbox
 
 - This Proyect was created to practice English and React at the same time.
-- In the future will be a tool for practice
+- Also a tool for practice
+
+## Demo & Live editor
+[Live Version in CodeSandbox](https://codesandbox.io/p/sandbox/english-verb-practice-github-tuqsfw)
 
 ## Tasklist
 
@@ -19,10 +22,10 @@ Created with CodeSandbox
 - [X] Low Contrast Mode
 - [X] Explanation of each time
 - [X] less code for setVerb
-- [ ] Modal Animation
 
 ## Optional Improvements
 
 - [ ] Dark Mode?
+- [ ] Modal Animation
 - [ ] Questions and negative?
 - [ ] more component division?
